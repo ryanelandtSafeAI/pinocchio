@@ -30,15 +30,9 @@ namespace boost
         struct constant_pi< CppAD::cg::CG<Scalar> > : constant_pi<Scalar>
         {
           typedef CppAD::cg::CG<Scalar> CGScalar;
-          
-          template <int N>
-          static inline CGScalar get(const mpl::int_<N>& n)
-          {
-            return CGScalar(constant_pi<Scalar>::get(n));
-          }
 
-          template <class T, T value>
-          static inline CGScalar get(const std::integral_constant<T, value> &n)
+          template <class AnyT>
+          static inline CGScalar get(const AnyT& n)
           {
             return CGScalar(constant_pi<Scalar>::get(n));
           }

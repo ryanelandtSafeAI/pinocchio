@@ -29,16 +29,10 @@ namespace boost
         template<typename Scalar>
         struct constant_pi< CppAD::AD<Scalar> > : constant_pi<Scalar>
         {
-          typedef CppAD::AD<Scalar> ADScalar;
-          
-          template <int N>
-          static inline ADScalar get(const mpl::int_<N>& n)
-          {
-            return ADScalar(constant_pi<Scalar>::get(n));
-          }
+          typedef CppAD::AD<Scalar> ADScalar;    
 
-          template <class T, T value>
-          static inline ADScalar get(const std::integral_constant<T, value> &n)
+          template <class AnyT>
+          static inline ADScalar get(const AnyT& n)
           {
             return ADScalar(constant_pi<Scalar>::get(n));
           }
